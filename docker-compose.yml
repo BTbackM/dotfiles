@@ -1,0 +1,14 @@
+services:
+  dotfiles-test:
+    image: archlinux:latest
+    container_name: dotfiles-test
+    volumes:
+      - .:/home/archlinux/dotfiles
+    command: sleep infinity
+    working_dir: /home/archlinux/dotfiles
+    stdin_open: true
+    tty: true
+    user: archlinux
+    build:
+      context: .
+      dockerfile: Dockerfile
