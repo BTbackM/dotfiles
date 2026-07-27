@@ -1,0 +1,79 @@
+* {
+  font-family: "IosevkaTermSlab Nerd Font";
+  font-size: 16px;
+  margin: 3 3 0 3;
+}
+
+window#waybar {
+  background-color: rgba(0, 0, 0, 0);
+  color: rgba(255, 255, 255, 0.75);
+  transition-property: background-color;
+  transition-duration: 0.5s;
+}
+
+.modules-left {
+  opacity: 1;
+  background-color: rgba(0, 0, 0, 0.5);
+  border-radius: 0.25rem;
+  padding: 2px 10px;
+}
+
+.modules-right {
+  opacity: 1;
+  background-color: rgba(0, 0, 0, 0.5);
+  border-radius: 0.25rem;
+  padding: 2px 10px;
+}
+
+#custom-arch {
+  color: #b6b5d8;
+  font-family: "Symbols Nerd Font Mono";
+  font-size: 20px;
+}
+
+#workspaces {
+  margin: 0px;
+  padding: 0px;
+}
+
+#workspaces button {
+  color: rgba(131, 165, 152, 1);
+  margin: 0px;
+  padding: 0 0 2px 0;
+}
+
+#workspaces button.active {
+  color: rgba(255, 255, 255, 0.75);
+}
+
+#workspaces button.empty {
+  color: rgba(255, 255, 255, 0.75);
+}
+
+#workspaces button label {
+  font-family: "Symbols Nerd Font Mono";
+  font-size: 18px;
+  padding: 0px;
+  margin: 0px;
+}
+
+#disk {
+  color: rgba(177, 98, 134, 1);
+}
+
+#memory {
+  color: rgba(131, 165, 152, 1);
+}
+
+#cpu {
+  color: rgba(215, 153, 33, 1);
+}
+
+#temperature {
+  color: lightslategray;
+}
+
+#clock {
+  font-weight: bolder;
+  padding: 0 3px 0 0;
+}
