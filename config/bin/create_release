@@ -1,0 +1,14 @@
+#!/bin/bash
+
+set -e
+
+source $HOME/.dotfiles/config/bin/colors
+
+if [[ -z "$1" ]]; then
+    echo -e "${BRED}Error:${NC} No version specified"
+    echo "Usage: $0 <version>"
+    echo "Example: $0 0.0.1"
+    exit 1
+fi
+
+
