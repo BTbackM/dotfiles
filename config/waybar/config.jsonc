@@ -1,0 +1,63 @@
+{
+  "name": "waybar",
+  "layer": "top",
+  "position": "top",
+  "spacing": 10,
+  "reload_style_on_change": true,
+  "modules-left": [
+    "custom/arch",
+    "hyprland/workspaces"
+  ],
+  "modules-right": [
+    "disk#root",
+    "disk#d",
+    "memory",
+    "cpu",
+    "temperature",
+    "clock"
+  ],
+  "custom/arch": {
+    "format": ""
+  },
+  "hyprland/workspaces": {
+    "format": "{icon}",
+    "format-icons": {
+      "active": "󰫈",
+      "visible": "󰋘",
+      "default": "󰋘",
+      "empty": "󰋙"
+    },
+    "on-scroll-up": "hyprctl dispatch workspace e+1",
+    "on-scroll-down": "hyprctl dispatch workspace e-1",
+    "all-outputs": false
+  },
+  "disk#root": {
+    "path": "/",
+    "format": "  {used}",
+    "tooltip": false
+  },
+  "disk#d": {
+    "path": "/mnt/d",
+    "format": "  {used}",
+    "tooltip": false
+  },
+  "memory": {
+    "interval": 10,
+    "format": "  {used}",
+    "tooltip": false
+  },
+  "cpu": {
+    "interval": 10,
+    "format": "  {usage}%",
+    "tooltip": false
+  },
+  "temperature": {
+    "interval": 10,
+    "tooltip": false
+  },
+  "clock": {
+    "interval": 1,
+    "format": "{:%H:%M:%S}",
+    "tooltip": false
+  }
+}
