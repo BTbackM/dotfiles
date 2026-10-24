@@ -1,4 +1,5 @@
 local smw = require("plugins.split-monitor-workspaces")
+local functions = require("functions")
 local terminal = "alacritty"
 local browser = "brave"
 local menu = "wofi --show drun"
@@ -18,12 +19,16 @@ hl.bind(
 
 -- Workspaces
 for i = 1, smw.get_amount_of_workspaces() do
+	local index = i
 	local n = tostring(i)
 	if n == "10" then
 		n = "0"
 	end
 	hl.bind(mainMod .. " +" .. n, smw.workspace(n))
 	hl.bind(mainMod .. " + SHIFT +" .. n, smw.move_to_workspace_silent(n))
+	hl.bind(mainMod .. " + ALT +" .. n, function()
+		functions.swap_workspace_contents(index)
+	end)
 end
 
 -- Window management
