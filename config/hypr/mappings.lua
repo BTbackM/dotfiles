@@ -16,6 +16,9 @@ hl.bind(
 	mainMod .. " + M",
 	hl.dsp.exec_cmd("command -v hyprshutdown >/dev/null 2>&1 && hyprshutdown || hyprctl dispatch 'hl.dsp.exit()'")
 )
+hl.bind(mainMod .. " + SHIFT + M", function()
+	functions.swap_monitor_contents()
+end)
 
 -- Workspaces
 for i = 1, smw.get_amount_of_workspaces() do
@@ -49,6 +52,7 @@ hl.bind(mainMod .. " + SHIFT + k", hl.dsp.window.move({ monitor = "+1" }))
 hl.bind(mainMod .. " + mouse:272", hl.dsp.window.drag(), { mouse = true })
 
 -- Screenshots
+hl.bind("mouse:277", hl.dsp.exec_cmd("hyprshot -m region --clipboard-only"))
 hl.bind(mainMod .. " + S", hl.dsp.exec_cmd("hyprshot -m region"))
 hl.bind(mainMod .. " + SHIFT + S", hl.dsp.exec_cmd("hyprshot -m region --clipboard-only"))
 hl.bind(mainMod .. " + ALT + S", hl.dsp.exec_cmd("hyprshot -m window"))
