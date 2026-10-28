@@ -1,0 +1,5 @@
+[user]
+	email = felix.blanco@utec.edu.pe
+  name = BTbackM
+[pull]
+  rebase = true
