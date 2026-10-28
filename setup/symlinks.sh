@@ -12,4 +12,10 @@ echo -e "Creating config symlinks: ${BGREEN}symlinks.sh${NC}"
     "$dotfiles_dir/config/git/.gitconfig" \
     "$HOME/.gitconfig"
 
-echo -e "${GREEN}Linked Git config to ~/.gitconfig${NC}"
+echo -e "Linked Git config to ${BRED}~/.gitconfig${NC}"
+
+"$dotfiles_dir/config/bin/create_symlink" \
+    "$dotfiles_dir/config/hypr/" \
+    "$HOME/.config/hypr/"
+
+echo -e "Linked Hypr config to ${BRED}~/.config/hypr${NC}"

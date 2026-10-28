@@ -17,7 +17,15 @@ if [[ "$link" != /* ]]; then
     link="$PWD/$link"
 fi
 
-if [[ -d "$link" ]]; then
+# Remove trailing slashes so rm acts on a symlink itself, not its target.
+while [[ "$target" != / && "$target" == */ ]]; do
+    target=${target%/}
+done
+while [[ "$link" != / && "$link" == */ ]]; do
+    link=${link%/}
+done
+
+if [[ -d "$link" && ! -d "$target" ]]; then
     link="$link/$(basename -- "$target")"
 fi
 
@@ -25,7 +33,7 @@ parent=$(dirname -- "$link")
 
 mkdir -p -- "$parent"
 if [[ -e "$link" || -L "$link" ]]; then
-    rm -f -- "$link"
+    rm -rf -- "$link"
 fi
 
 ln -sf -- "$target" "$link"
