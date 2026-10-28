@@ -1,4 +1,5 @@
-local smw = require("plugins.split-monitor-workspaces")
+local smw = hl.plugin.split_monitor_workspaces
+local workspace_config = require("workspace_config")
 local functions = require("functions")
 local terminal = "alacritty"
 local browser = "brave"
@@ -21,14 +22,18 @@ hl.bind(mainMod .. " + SHIFT + M", function()
 end)
 
 -- Workspaces
-for i = 1, smw.get_amount_of_workspaces() do
+for i = 1, workspace_config.count do
 	local index = i
 	local n = tostring(i)
 	if n == "10" then
 		n = "0"
 	end
-	hl.bind(mainMod .. " +" .. n, smw.workspace(n))
-	hl.bind(mainMod .. " + SHIFT +" .. n, smw.move_to_workspace_silent(n))
+	hl.bind(mainMod .. " +" .. n, function()
+		return smw.workspace(n)
+	end)
+	hl.bind(mainMod .. " + SHIFT +" .. n, function()
+		return smw.move_to_workspace_silent(n)
+	end)
 	hl.bind(mainMod .. " + ALT +" .. n, function()
 		functions.swap_workspace_contents(index)
 	end)

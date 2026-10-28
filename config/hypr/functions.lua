@@ -1,6 +1,16 @@
 local M = {}
 
-local smw_helpers = require("plugins.split-monitor-workspaces.lua.helpers")
+local workspace_config = require("workspace_config")
+
+local function get_workspace_from_monitor(monitor, index)
+	for priority, name in ipairs(workspace_config.monitor_priority) do
+		if monitor.name == name then
+			return tostring((priority - 1) * workspace_config.count + tonumber(index))
+		end
+	end
+
+	return tostring(index)
+end
 
 function M.swap_workspace_contents(index)
 	local monitor = hl.get_active_monitor()
@@ -9,7 +19,7 @@ function M.swap_workspace_contents(index)
 		return
 	end
 
-	local target_workspace = smw_helpers.get_workspace_from_monitor(monitor, tostring(index))
+	local target_workspace = get_workspace_from_monitor(monitor, index)
 	if current_workspace.name == target_workspace then
 		return
 	end
@@ -52,14 +62,11 @@ function M.swap_monitor_contents()
 	end
 
 	local target_monitor = monitors[current_index % #monitors + 1]
-	local workspace_count = math.min(
-		smw_helpers.get_monitor_max_ws(current_monitor.name),
-		smw_helpers.get_monitor_max_ws(target_monitor.name)
-	)
+	local workspace_count = workspace_config.count
 
 	for index = 1, workspace_count do
-		local current_workspace = smw_helpers.get_workspace_from_monitor(current_monitor, tostring(index))
-		local target_workspace = smw_helpers.get_workspace_from_monitor(target_monitor, tostring(index))
+		local current_workspace = get_workspace_from_monitor(current_monitor, index)
+		local target_workspace = get_workspace_from_monitor(target_monitor, index)
 		if current_workspace ~= target_workspace then
 			local current_windows = hl.get_workspace_windows(current_workspace)
 			local target_windows = hl.get_workspace_windows(target_workspace)
