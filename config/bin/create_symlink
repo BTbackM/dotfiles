@@ -1,0 +1,39 @@
+#!/bin/bash
+
+set -e
+
+if [[ $# -ne 2 ]]; then
+    echo "Usage: $0 <target> <link>" >&2
+    exit 1
+fi
+
+target=$1
+link=$2
+
+if [[ "$target" != /* ]]; then
+    target="$PWD/$target"
+fi
+if [[ "$link" != /* ]]; then
+    link="$PWD/$link"
+fi
+
+# Remove trailing slashes so rm acts on a symlink itself, not its target.
+while [[ "$target" != / && "$target" == */ ]]; do
+    target=${target%/}
+done
+while [[ "$link" != / && "$link" == */ ]]; do
+    link=${link%/}
+done
+
+if [[ -d "$link" && ! -d "$target" ]]; then
+    link="$link/$(basename -- "$target")"
+fi
+
+parent=$(dirname -- "$link")
+
+mkdir -p -- "$parent"
+if [[ -e "$link" || -L "$link" ]]; then
+    rm -rf -- "$link"
+fi
+
+ln -sf -- "$target" "$link"

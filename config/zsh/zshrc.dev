@@ -1,0 +1,10 @@
+export SDKMAN_DIR="$HOME/.sdkman"
+# TODO: SDKMAN init
+
+export NVM_DIR="$HOME/.nvm"
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh" --no-use
+
+if (( $+commands[ng] )); then
+  [[ -f ~/.cache/ng-completion.zsh ]] || ng completion script > ~/.cache/ng-completion.zsh
+  source ~/.cache/ng-completion.zsh
+fi
