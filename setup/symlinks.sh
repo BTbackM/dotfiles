@@ -25,3 +25,10 @@ echo -e "Linked Hypr config to ${BLUE}~/.config/hypr${NC}"
     "$HOME/.zshrc/"
 
 echo -e "Linked ZSH config to ${BLUE}~/.zshrc${NC}"
+
+
+"$dotfiles_dir/config/bin/create_symlink" \
+    "$dotfiles_dir/config/alacritty" \
+    "$HOME/.config/alacritty"
+
+echo -e "Linked Alacritty config to ${BLUE}~/.config/alacritty${NC}"

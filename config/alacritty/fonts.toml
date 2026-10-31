@@ -1,0 +1,27 @@
+[font]
+size = 12.1
+builtin_box_drawing = true
+
+[font.normal]
+family = "JetBrainsMono Nerd Font"
+style = "ExtraLight"
+
+[font.bold]
+family = "JetBrainsMono Nerd Font"
+style = "Bold"
+
+[font.italic]
+family = "JetBrainsMono Nerd Font"
+style = "Thin"
+
+[font.bold_italic]
+family = "JetBrainsMono Nerd Font"
+style = "ExtraBold"
+
+[font.offset]
+x = -1
+y = -5
+
+[font.glyph_offset]
+x = 0
+y = 0
