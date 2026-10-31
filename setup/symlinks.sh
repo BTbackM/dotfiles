@@ -19,3 +19,9 @@ echo -e "Linked Git config to ${BRED}~/.gitconfig${NC}"
     "$HOME/.config/hypr/"
 
 echo -e "Linked Hypr config to ${BRED}~/.config/hypr${NC}"
+
+"$dotfiles_dir/config/bin/create_symlink" \
+    "$dotfiles_dir/config/zsh/zshrc" \
+    "$HOME/.zshrc/"
+
+echo -e "Linked ZSH config to ${BRED}~/.zshrc${NC}"

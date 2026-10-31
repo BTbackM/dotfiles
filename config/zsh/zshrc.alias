@@ -1,0 +1,48 @@
+# General
+alias ls="ls -l"
+alias reload="source $HOME/.zshrc"
+alias dotfiles="cd $HOME/.dotfiles"
+alias config="cd $HOME/.dotfiles/config"
+
+# Hypr
+alias day="hyprctl hyprsunset identity"
+alias night="hyprctl hyprsunset temperature 4500"
+
+# Git
+alias g="git"
+alias ga="git add"
+alias gc="git commit -m"
+alias gs="git status"
+alias gp="git push"
+alias gsw="git switch"
+alias gglog="git-graph -f $'\e[1m%h\e[0m \e[1;96m%cs\e[0m \e[1m%d\e[0m %s'"
+
+# Tmux
+alias t="tmux"
+alias ta="tmux attach"
+alias tl="tmux list-sessions"
+alias tn="tmux new-session -s"
+alias tx="tmux kill-session"
+
+# Docker
+alias drm='docker rm'
+alias drmi='docker rmi'
+alias dps='docker ps'
+alias dpsa='docker ps -a --format "table {{.Image}}\\t{{.Status}}\\t{{.Command}}\\t{{.Ports}}"'
+alias di='docker images'
+alias dia='docker images -a'
+alias drmia='docker rmi $(docker images -aq -f "dangling=true")'
+alias drma='docker rm $(docker ps -a -q)'
+alias dsa='docker stop $(docker ps -a -q)'
+
+# pnpm
+alias pd='pnpm dev'
+alias pi='pnpm install'
+alias pt='pnpm tsc'
+alias pf='pnpm format'
+
+# Yarn
+alias ys='yarn start'
+alias yi='yarn install'
+alias yt='yarn test'
+alias ytw='yarn test:watch'
