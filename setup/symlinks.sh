@@ -8,11 +8,11 @@ source "$dotfiles_dir/config/bin/colors"
 
 echo -e "Creating config symlinks: ${BGREEN}symlinks.sh${NC}"
 
-"$dotfiles_dir/config/bin/create_symlink" \
+"$dotfiles_dir/config/bin/copy" \
     "$dotfiles_dir/config/git/.gitconfig" \
     "$HOME/.gitconfig"
 
-echo -e "Linked Git config to ${BRED}~/.gitconfig${NC}"
+echo -e "Copied Git config to ${BRED}~/.gitconfig${NC}"
 
 "$dotfiles_dir/config/bin/create_symlink" \
     "$dotfiles_dir/config/hypr/" \

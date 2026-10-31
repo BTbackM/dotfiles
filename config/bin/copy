@@ -1,0 +1,50 @@
+#!/bin/bash
+
+set -e
+
+if [[ $# -ne 2 ]]; then
+    echo "Usage: $0 <target> <link>" >&2
+    exit 1
+fi
+
+target=$1
+link=$2
+
+if [[ "$target" != /* ]]; then
+    target="$PWD/$target"
+fi
+if [[ "$link" != /* ]]; then
+    link="$PWD/$link"
+fi
+
+while [[ "$target" != / && "$target" == */ ]]; do
+    target=${target%/}
+done
+while [[ "$link" != / && "$link" == */ ]]; do
+    link=${link%/}
+done
+
+if [[ ! -e "$target" && ! -L "$target" ]]; then
+    echo "Error: target does not exist: $target" >&2
+    exit 1
+fi
+
+if [[ -d "$link" ]]; then
+    link="$link/$(basename -- "$target")"
+fi
+
+target_real=$(realpath -m -- "$target")
+link_real=$(realpath -m -- "$link")
+if [[ "$link_real" == "$target_real" || ( -d "$target" && "$link_real" == "$target_real"/* ) ]]; then
+    echo "Error: destination must not be the target or inside it" >&2
+    exit 1
+fi
+
+parent=$(dirname -- "$link")
+mkdir -p -- "$parent"
+
+if [[ -e "$link" || -L "$link" ]]; then
+    rm -rf -- "$link"
+fi
+
+cp -a -- "$target" "$link"
