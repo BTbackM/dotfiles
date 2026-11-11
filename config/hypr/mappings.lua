@@ -1,11 +1,11 @@
-local smw = hl.plugin.split_monitor_workspaces
-local workspace_config = require("workspace_config")
+local smw = require("plugins.split-monitor-workspaces")
 local functions = require("functions")
 local terminal = "alacritty"
 local browser = "brave"
 local menu = "wofi --show drun"
 local mainMod = "SUPER"
 
+hl.bind(mainMod .. " + SHIFT + Q", hl.dsp.exit())
 hl.bind(mainMod .. " + Return", hl.dsp.exec_cmd(terminal))
 hl.bind(mainMod .. " + T", hl.dsp.exec_cmd(terminal .. " -e 'btop'"))
 hl.bind(mainMod .. " + R", hl.dsp.exec_cmd(terminal .. " -e 'ranger'"))
@@ -22,26 +22,23 @@ hl.bind(mainMod .. " + SHIFT + M", function()
 end)
 
 -- Workspaces
-for i = 1, workspace_config.count do
+for i = 1, smw.get_amount_of_workspaces() do
 	local index = i
-	local n = tostring(i)
-	if n == "10" then
-		n = "0"
+	local workspace = tostring(i)
+	local key = workspace
+	if key == "10" then
+		key = "0"
 	end
-	hl.bind(mainMod .. " +" .. n, function()
-		return smw.workspace(n)
-	end)
-	hl.bind(mainMod .. " + SHIFT +" .. n, function()
-		return smw.move_to_workspace_silent(n)
-	end)
-	hl.bind(mainMod .. " + ALT +" .. n, function()
+	hl.bind(mainMod .. " +" .. key, smw.workspace(workspace))
+	hl.bind(mainMod .. " + SHIFT +" .. key, smw.move_to_workspace_silent(workspace))
+	hl.bind(mainMod .. " + ALT +" .. key, function()
 		functions.swap_workspace_contents(index)
 	end)
 end
 
 -- Window management
-hl.bind(mainMod .. " + mouse_down", hl.dsp.focus({ workspace = "e-1" }))
-hl.bind(mainMod .. " + mouse_up", hl.dsp.focus({ workspace = "e+1" }))
+hl.bind(mainMod .. " + mouse_down", smw.cycle_workspaces("next"))
+hl.bind(mainMod .. " + mouse_up", smw.cycle_workspaces("prev"))
 hl.bind(mainMod .. " + F", hl.dsp.window.fullscreen({ action = "toggle" }))
 hl.bind(mainMod .. " + SHIFT + T", hl.dsp.window.float({ action = "toggle" }))
 hl.bind(mainMod .. " + left", hl.dsp.focus({ direction = "left" }))

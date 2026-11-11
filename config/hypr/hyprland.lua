@@ -1,16 +1,18 @@
-package.path = package.path .. ";./?.lua;./?/init.lua"
+local config_dir = debug.getinfo(1, "S").source:match("^@(.*/)")
+if config_dir then
+	package.path = package.path .. ";" .. config_dir .. "?.lua;" .. config_dir .. "?/init.lua"
+else
+	package.path = package.path .. ";./?.lua;./?/init.lua"
+end
 
 local workspace_config = require("workspace_config")
+local smw = require("plugins.split-monitor-workspaces")
+_G.smw = smw
 
-hl.config({
-	plugin = {
-		split_monitor_workspaces = {
-			count = workspace_config.count,
-		},
-	},
+smw.setup({
+	workspace_count = workspace_config.count,
+	monitor_priority = workspace_config.monitor_priority,
 })
-
-hl.plugin.split_monitor_workspaces.monitor_priority(workspace_config.monitor_priority)
 
 hl.env("HYPRSHOT_DIR", os.getenv("HOME") .. "/Pictures/Screenshots")
 

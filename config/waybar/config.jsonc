@@ -27,8 +27,8 @@
       "default": "󰋘",
       "empty": "󰋙"
     },
-    "on-scroll-up": "hyprctl dispatch workspace e+1",
-    "on-scroll-down": "hyprctl dispatch workspace e-1",
+    "on-scroll-up": "hyprctl dispatch \"smw.cycle_workspaces('prev')\"",
+    "on-scroll-down": "hyprctl dispatch \"smw.cycle_workspaces('next')\"",
     "all-outputs": false
   },
   "disk#root": {

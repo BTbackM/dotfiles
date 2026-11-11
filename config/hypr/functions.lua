@@ -1,15 +1,10 @@
 local M = {}
 
-local workspace_config = require("workspace_config")
+local smw = require("plugins.split-monitor-workspaces")
+local smw_helpers = require("plugins.split-monitor-workspaces.lua.helpers")
 
 local function get_workspace_from_monitor(monitor, index)
-	for priority, name in ipairs(workspace_config.monitor_priority) do
-		if monitor.name == name then
-			return tostring((priority - 1) * workspace_config.count + tonumber(index))
-		end
-	end
-
-	return tostring(index)
+	return smw_helpers.get_workspace_from_monitor(monitor, tostring(index))
 end
 
 function M.swap_workspace_contents(index)
@@ -62,7 +57,7 @@ function M.swap_monitor_contents()
 	end
 
 	local target_monitor = monitors[current_index % #monitors + 1]
-	local workspace_count = workspace_config.count
+	local workspace_count = smw.get_amount_of_workspaces()
 
 	for index = 1, workspace_count do
 		local current_workspace = get_workspace_from_monitor(current_monitor, index)
