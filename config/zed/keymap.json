@@ -8,7 +8,10 @@
   {
     "context": "VimControl && !menu",
     "bindings": {
-      "space e": "workspace::ToggleLeftDock"
+      "space e": "workspace::ToggleLeftDock",
+      "g r d": "editor::GoToDefinition",
+      "g r i": "editor::GoToImplementation",
+      "g r r": "editor::FindAllReferences"
     }
   },
   {

@@ -1,6 +1,8 @@
 {
   "project_panel": {
-    "dock": "left"
+    "dock": "left",
+    "bold_folder_labels": true,
+    "entry_spacing": "standard"
   },
   "outline_panel": {
     "dock": "left"
@@ -19,7 +21,16 @@
   "buffer_line_height": {
     "custom": 1.0
   },
+  "show_whitespaces": "all",
+  "whitespace_map": {
+    "space": "·",
+    "tab": "» "
+  },
+  "indent_guides": {
+    "enabled": false
+  },
   "buffer_font_family": "JBM Custom",
+  "ui_font_family": "JBM Custom",
   "telemetry": {
     "diagnostics": false,
     "metrics": false
