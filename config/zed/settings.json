@@ -1,0 +1,50 @@
+{
+  "project_panel": {
+    "dock": "left"
+  },
+  "outline_panel": {
+    "dock": "left"
+  },
+  "collaboration_panel": {
+    "dock": "left"
+  },
+  "agent": {
+    "dock": "right",
+    "favorite_models": [],
+    "model_parameters": []
+  },
+  "git_panel": {
+    "dock": "left"
+  },
+  "buffer_line_height": {
+    "custom": 1.0
+  },
+  "buffer_font_family": "JBM Custom",
+  "telemetry": {
+    "diagnostics": false,
+    "metrics": false
+  },
+  "session": {
+    "trust_all_worktrees": true
+  },
+  "vim_mode": true,
+  "semantic_tokens": "combined",
+  "global_lsp_settings": {
+    "semantic_token_rules": [
+      {
+        "token_type": "extensionMethod",
+        "foreground_color": "#040067FF",
+        "font_weight": "normal",
+        "font_style": "normal"
+      }
+    ]
+  },
+  "base_keymap": "JetBrains",
+  "ui_font_size": 16,
+  "buffer_font_size": 16.5,
+  "theme": {
+    "mode": "light",
+    "light": "BT Light Soft",
+    "dark": "Gruvbox Dark"
+  }
+}

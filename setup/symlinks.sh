@@ -39,3 +39,8 @@ echo -e "Linked Alacritty config to ${BLUE}~/.config/alacritty${NC}"
 
 echo -e "Linked Tmux config to ${BLUE}~/.tmux.conf${NC}"
 
+"$dotfiles_dir/config/bin/create_symlink" \
+    "$dotfiles_dir/config/zed" \
+    "$HOME/.config/zed"
+
+echo -e "Linked Zed config to ${BLUE}~/.config/zed${NC}"

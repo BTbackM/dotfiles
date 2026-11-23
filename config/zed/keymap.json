@@ -1,0 +1,20 @@
+[
+  {
+    "context": "VimControl",
+    "bindings": {
+      "ctrl-r": "workspace::Reload"
+    }
+  },
+  {
+    "context": "VimControl && !menu",
+    "bindings": {
+      "space e": "workspace::ToggleLeftDock"
+    }
+  },
+  {
+    "context": "ProjectPanel",
+    "bindings": {
+      "space e": "workspace::ToggleLeftDock"
+    }
+  }
+]
