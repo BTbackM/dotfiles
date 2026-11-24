@@ -44,3 +44,9 @@ echo -e "Linked Tmux config to ${BLUE}~/.tmux.conf${NC}"
     "$HOME/.config/zed"
 
 echo -e "Linked Zed config to ${BLUE}~/.config/zed${NC}"
+
+"$dotfiles_dir/config/bin/create_symlink" \
+    "$dotfiles_dir/config/wezterm" \
+    "$HOME/.config/wezterm"
+
+echo -e "Linked WezTerm config to ${BLUE}~/.config/wezterm${NC}"
